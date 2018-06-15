@@ -35,12 +35,10 @@ public class Location {
 
     public void addBook(Book book) {
         booksAvailable.add(book);
-        comment.setPost(this);
     }
 
-    public void removeComment(PostComment comment) {
-        comments.remove(comment);
-        comment.setPost(null);
+    public void removeComment(Book book) {
+        booksAvailable.remove(book);
     }
 
     @Override
