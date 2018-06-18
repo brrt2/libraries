@@ -1,5 +1,7 @@
 package com.library.libraryProject.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -21,6 +23,7 @@ public class Location {
     @OneToMany(mappedBy = "location",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
+    @JsonIgnore
     private Set<Book> booksAvailable = new HashSet<>(0);
 
     public Location(String name, String address) {
@@ -84,13 +87,5 @@ public class Location {
         return Objects.hash(id, name, address, booksAvailable);
     }
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", booksAvailable=" + booksAvailable +
-                '}';
-    }
+
 }

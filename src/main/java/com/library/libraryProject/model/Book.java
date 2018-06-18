@@ -13,17 +13,15 @@ public class Book {
     private String title;
     private String author;
     private int yearPublished;
-    private BookLanguage bookLanguage;
+    private String bookLanguage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="book_id")
+    // when set to 'LAZY' it throws an exception
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="location_id")
     private Location location;
 
     public Book() {
     }
-
-
-
 
     public String getTitle() {
         return title;
@@ -49,14 +47,21 @@ public class Book {
         this.yearPublished = yearPublished;
     }
 
-    public BookLanguage getBookLanguage() {
+    public String getBookLanguage() {
         return bookLanguage;
     }
 
-    public void setBookLanguage(BookLanguage bookLanguage) {
+    public void setBookLanguage(String bookLanguage) {
         this.bookLanguage = bookLanguage;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -67,23 +72,14 @@ public class Book {
                 Objects.equals(id, book.id) &&
                 Objects.equals(title, book.title) &&
                 Objects.equals(author, book.author) &&
-                bookLanguage == book.bookLanguage &&
                 Objects.equals(location, book.location);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, title, author, yearPublished, bookLanguage, location);
+        return Objects.hash(id, title, author, yearPublished, location);
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", yearPublished=" + yearPublished +
-                ", bookLanguage=" + bookLanguage +
-                '}';
-    }
+
 }

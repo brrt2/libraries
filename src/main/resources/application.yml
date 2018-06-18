@@ -1,10 +1,10 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/library?verifyServerCertificate=false&useSSL=false&requireSSL=false
+    url: jdbc:mysql://localhost:3306/library2?verifyServerCertificate=false&useSSL=false&requireSSL=false
     username: root
-    password: letmein
+    password: password
   jpa:
-    hibernate-dll-auto: update
+    hibernate-dll-auto: create
     generate-ddl: true
     show-sql: true
