@@ -9,4 +9,5 @@ public interface LocationRepository extends CrudRepository<Location,Long> {
     Location save(Location location);
     Page<Location> findAll();
     Location findByName(String name);
+    Location findById(Long id);
 }

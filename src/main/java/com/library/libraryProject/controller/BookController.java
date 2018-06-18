@@ -5,12 +5,14 @@ import com.library.libraryProject.repository.BookRepository;
 import com.library.libraryProject.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
+@PreAuthorize("hasAnyRole('ADMIN','USER')")
 public class BookController {
 
     @Autowired
@@ -69,6 +71,14 @@ public class BookController {
 
         return bookRepository.findAll();
     }
+
+
+//    @GetMapping("/getById")
+//    public Book getById(Long bookId) {
+//
+//        return bookRepository.
+//
+//    }
 
 
 
