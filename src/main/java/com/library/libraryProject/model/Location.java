@@ -21,17 +21,15 @@ public class Location {
     @OneToMany(mappedBy = "location",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    private Set<Book> booksAvailable;
+    private Set<Book> booksAvailable = new HashSet<>(0);
 
     public Location(String name, String address) {
         this.name = name;
         this.address = address;
-        booksAvailable = new HashSet<>();
     }
 
     public Location() {
     }
-
 
     public void addBook(Book book) {
         booksAvailable.add(book);
@@ -39,6 +37,34 @@ public class Location {
 
     public void removeComment(Book book) {
         booksAvailable.remove(book);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<Book> getBooksAvailable() {
+        return booksAvailable;
+    }
+
+    public void setBooksAvailable(Set<Book> booksAvailable) {
+        this.booksAvailable = booksAvailable;
     }
 
     @Override
